@@ -10,11 +10,8 @@
   "icon": "assets/spaghettitrees/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "dev.arthomnix.spaghettitrees.client.SpaghettitreesClient"
-    ],
     "main": [
-      "dev.arthomnix.spaghettitrees.Spaghettitrees"
+      "dev.arthomnix.spaghettitrees.SpaghettiTrees"
     ]
   },
   "mixins": [

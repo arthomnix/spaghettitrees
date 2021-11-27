@@ -7,7 +7,7 @@ import net.fabricmc.api.ModInitializer;
 
 // whenever you see the word "better" in this mod put it in huge quote marks
 
-public class Spaghettitrees implements ModInitializer {
+public class SpaghettiTrees implements ModInitializer {
     @Override
     public void onInitialize() {
         BetterTrees.registerAll();
