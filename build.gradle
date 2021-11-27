@@ -1,9 +1,10 @@
 plugins {
     id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'maven-publish'
+    id 'org.ajoberstar.grgit' version '4.1.0'
 }
 
-version = project.mod_version
+version = "${project.mod_version}.rev.${grgit.head().abbreviatedId}+${project.minecraft_version}"
 group = project.maven_group
 
 repositories {
