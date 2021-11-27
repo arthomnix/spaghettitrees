@@ -140,7 +140,7 @@ public class BetterTrunkPlacer extends TrunkPlacer {
                     if(level == 0) newLength = newLength - initialBranchModifier;
                     else newLength = newLength - subBranchModifier;
                     Direction newDirection = chooseFromAllowedDirections();
-                    BlockPos newEndPos = bendPos(bendPos(startPos, i), newLength, newDirection);
+                    BlockPos newEndPos = bendPos(startPos, i).offset(newDirection, newLength);
                     int newBranchHeight = newEndPos.getY() - rootPos.getY();
                     if (newLength > 0 && (newEndPos.getManhattanDistance(rootPos) < (11 + newBranchHeight))) { // restrict distance branches can be from the trunk
                         Branch branch = new Branch(world, replacer, random, bendPos(startPos, i), rootPos, config, newDirection, newLength, level + 1, maxLevel, getDoubleInRange(minLeftBias, maxLeftBias), getDoubleInRange(minUpBias, maxUpBias), (0.6 * random.nextDouble()) + 0.4, branchProbabilityModifier, subBranchProbabilityDivisor, subBranchModifier, 0,true);
