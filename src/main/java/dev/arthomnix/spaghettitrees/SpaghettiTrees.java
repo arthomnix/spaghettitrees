@@ -1,7 +1,8 @@
 package dev.arthomnix.spaghettitrees;
 
 
-import dev.arthomnix.spaghettitrees.tree.BetterTrees;
+import dev.arthomnix.spaghettitrees.tree.BetterTreesConfiguredFeatures;
+import dev.arthomnix.spaghettitrees.tree.BetterTreesPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 
 
@@ -10,6 +11,7 @@ import net.fabricmc.api.ModInitializer;
 public class SpaghettiTrees implements ModInitializer {
     @Override
     public void onInitialize() {
-        BetterTrees.registerAll();
+        BetterTreesConfiguredFeatures.registerAll();
+        BetterTreesPlacedFeatures.registerAll();
     }
 }

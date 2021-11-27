@@ -48,7 +48,7 @@ public class BetterTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> getType() {
-        return BetterTrees.BETTER_TRUNK_PLACER;
+        return BetterTreesConfiguredFeatures.BETTER_TRUNK_PLACER;
     }
 
     @Override

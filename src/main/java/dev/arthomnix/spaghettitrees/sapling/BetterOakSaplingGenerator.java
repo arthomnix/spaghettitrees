@@ -1,6 +1,6 @@
 package dev.arthomnix.spaghettitrees.sapling;
 
-import dev.arthomnix.spaghettitrees.tree.BetterTrees;
+import dev.arthomnix.spaghettitrees.tree.BetterTreesConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -12,6 +12,6 @@ public class BetterOakSaplingGenerator extends SaplingGenerator {
     @Nullable
     @Override
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return bees ? BetterTrees.TREE_BETTER_OAK_MORE_BEES : BetterTrees.TREE_BETTER_OAK;
+        return bees ? BetterTreesConfiguredFeatures.TREE_BETTER_OAK_MORE_BEES : BetterTreesConfiguredFeatures.TREE_BETTER_OAK;
     }
 }
