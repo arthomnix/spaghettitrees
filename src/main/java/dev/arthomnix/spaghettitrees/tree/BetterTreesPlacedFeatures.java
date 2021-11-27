@@ -14,16 +14,76 @@ import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class BetterTreesPlacedFeatures {
-    public static final PlacedFeature TREE_BETTER_OAK = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_OAK_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_RARE_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_OAK_REGULAR_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_REGULAR_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_OAK_MORE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_MORE_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_SWAMP_OAK = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_SWAMP_OAK, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
+    public static final PlacedFeature TREE_BETTER_OAK = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
 
-    public static final PlacedFeature TREE_BETTER_BIRCH = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_BIRCH_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_RARE_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_BIRCH_REGULAR_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_REGULAR_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
-    public static final PlacedFeature TREE_BETTER_BIRCH_MORE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_MORE_BEES, ImmutableList.of(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
+    public static final PlacedFeature TREE_BETTER_OAK_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_RARE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_OAK_REGULAR_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_REGULAR_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_OAK_MORE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK_MORE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_SWAMP_OAK = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_SWAMP_OAK, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_BIRCH = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_BIRCH_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_RARE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_BIRCH_REGULAR_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_REGULAR_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_BETTER_BIRCH_MORE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_MORE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
 
     public static final PlacedFeature BETTER_FOREST_TREES = BetterTreesConfiguredFeatures.BETTER_FOREST_TREES.withPlacement(
             VegetationPlacedFeatures.modifiers(
