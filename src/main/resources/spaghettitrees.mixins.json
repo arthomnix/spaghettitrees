@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.arthomnix.spaghettitrees.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "BlocksMixin",
+    "DefaultBiomeCreatorMixin",
+    "DefaultBiomeFeaturesMixin",
+    "FoliagePlacerInvoker",
+    "LargeOakFoliagePlacerMixin",
+    "TreeFeatureMixin",
+    "TrunkPlacerTypeInvoker"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

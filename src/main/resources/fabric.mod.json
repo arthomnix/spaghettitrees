@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "spaghettitrees",
+  "version": "${version}",
+  "name": "SpaghettiTrees",
+  "description": "Custom tree generation",
+  "authors": ["arthomnix"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/spaghettitrees/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.arthomnix.spaghettitrees.client.SpaghettitreesClient"
+    ],
+    "main": [
+      "dev.arthomnix.spaghettitrees.Spaghettitrees"
+    ]
+  },
+  "mixins": [
+    "spaghettitrees.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
