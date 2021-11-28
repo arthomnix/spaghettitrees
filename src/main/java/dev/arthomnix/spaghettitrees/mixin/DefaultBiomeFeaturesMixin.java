@@ -1,10 +1,8 @@
 package dev.arthomnix.spaghettitrees.mixin;
 
-import dev.arthomnix.spaghettitrees.tree.BetterTreesConfiguredFeatures;
 import dev.arthomnix.spaghettitrees.tree.BetterTreesPlacedFeatures;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,6 +1,5 @@
 package dev.arthomnix.spaghettitrees.mixin;
 
-import dev.arthomnix.spaghettitrees.tree.BetterTreesConfiguredFeatures;
 import dev.arthomnix.spaghettitrees.tree.BetterTreesPlacedFeatures;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.OverworldBiomeCreator;
