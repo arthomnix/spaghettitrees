@@ -55,7 +55,7 @@ public class BetterTrunkPlacer extends TrunkPlacer {
     public List<FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {
         setToDirt(world, replacer, random, startPos.down(), config);
         // The trunk is a branch
-        Branch mainTrunk = new Branch(world, replacer, random, startPos, startPos, config, Direction.UP, height, 0, 4, 0d, 0d, 0.05d, branchProbabilityModifier, subBranchProbabilityDivisor, branchLengthModifier, initialBranchLengthModifier, false);
+        Branch mainTrunk = new Branch(world, replacer, random, startPos, startPos, config, Direction.UP, height, 0, 4, 0d, 0d, 0.05d, false);
         // generate roots
         for(int i = 2; i < 6; ++i) {
             if(random.nextDouble() < 0.5D) {
@@ -80,8 +80,6 @@ public class BetterTrunkPlacer extends TrunkPlacer {
         int level;
         int length;
         int maxLevel;
-        int subBranchModifier;
-        int initialBranchModifier;
         double leftBias;
         double upBias;
         double bendiness;
@@ -89,11 +87,8 @@ public class BetterTrunkPlacer extends TrunkPlacer {
 
         int bendLeft = 0;
         int bendUp = 0;
-        
-        double branchProbabilityModifier;
-        double subBranchProbabilityDivisor;
 
-        public Branch(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, BlockPos startPos, BlockPos rootPos, TreeFeatureConfig config, Direction direction, int length, int level, int maxLevel, double leftBias, double upBias, double bendiness, double branchProbabilityModifier, double subBranchProbabilityDivisor, int subBranchModifier, int initialBranchModifier, boolean nodesAllAlong) {
+        public Branch(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, BlockPos startPos, BlockPos rootPos, TreeFeatureConfig config, Direction direction, int length, int level, int maxLevel, double leftBias, double upBias, double bendiness, boolean nodesAllAlong) {
             this.world = world;
             this.replacer = replacer;
             this.random = random;
@@ -108,10 +103,6 @@ public class BetterTrunkPlacer extends TrunkPlacer {
             else this.upBias = upBias;
             this.bendiness = bendiness;
             this.nodesAllAlong = nodesAllAlong;
-            this.subBranchModifier = subBranchModifier;
-            this.initialBranchModifier = initialBranchModifier;
-            this.branchProbabilityModifier = branchProbabilityModifier;
-            this.subBranchProbabilityDivisor = subBranchProbabilityDivisor;
 
             // Don't spawn branches below 5 blocks along the branch if the branch is level 0 (i.e. the trunk)
             if(level == 0) {
@@ -137,13 +128,13 @@ public class BetterTrunkPlacer extends TrunkPlacer {
                 // generates a sub-branch
                 if ((random.nextDouble() < getBranchProbability(i, length, branchProbabilityModifier, clampBelow)) && (level < maxLevel)) {
                     int newLength = length - (random.nextInt(2) + 1);
-                    if(level == 0) newLength = newLength - initialBranchModifier;
-                    else newLength = newLength - subBranchModifier;
+                    if(level == 0) newLength = newLength - initialBranchLengthModifier;
+                    else newLength = newLength - branchLengthModifier;
                     Direction newDirection = chooseFromAllowedDirections();
                     BlockPos newEndPos = bendPos(startPos, i).offset(newDirection, newLength);
                     int newBranchHeight = newEndPos.getY() - rootPos.getY();
                     if (newLength > 0 && (newEndPos.getManhattanDistance(rootPos) < (11 + newBranchHeight))) { // restrict distance branches can be from the trunk
-                        Branch branch = new Branch(world, replacer, random, bendPos(startPos, i), rootPos, config, newDirection, newLength, level + 1, maxLevel, getDoubleInRange(minLeftBias, maxLeftBias), getDoubleInRange(minUpBias, maxUpBias), (0.6 * random.nextDouble()) + 0.4, branchProbabilityModifier, subBranchProbabilityDivisor, subBranchModifier, 0,true);
+                        Branch branch = new Branch(world, replacer, random, bendPos(startPos, i), rootPos, config, newDirection, newLength, level + 1, maxLevel, getDoubleInRange(minLeftBias, maxLeftBias), getDoubleInRange(minUpBias, maxUpBias), (0.6 * random.nextDouble()) + 0.4,true);
                         list.addAll(branch.generate());
                     }
                 }
