@@ -14,6 +14,8 @@ import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class BetterTreesPlacedFeatures {
+    // Tried to split generating a new PlacedFeature from a ConfiguredFeature out into a function.
+    // Crashed on startup, so I'm just going to leave it like this for now.
     public static final PlacedFeature TREE_BETTER_OAK = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_OAK, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
