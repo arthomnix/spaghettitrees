@@ -67,7 +67,7 @@ public class BetterTrunkPlacer extends TrunkPlacer {
         return mainTrunk.generate();
     }
 
-    private class Branch {
+    protected class Branch {
         TestableWorld world;
         BiConsumer<BlockPos, BlockState> replacer;
         Random random;
