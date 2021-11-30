@@ -20,7 +20,7 @@ public class DeadLogTrunkPlacer extends BetterTrunkPlacer {
             fillTrunkPlacerFields(instance).apply(instance, DeadLogTrunkPlacer::new));
 
     public DeadLogTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
-        super(baseHeight, firstRandomHeight, secondRandomHeight, 0.75D, 2D, 0, 0, 0D, 1D, 0D, 1D);
+        super(baseHeight, firstRandomHeight, secondRandomHeight, 0.25D, 2D, 2, 6, 0D, 1D, 0D, 1D);
     }
 
     @Override
