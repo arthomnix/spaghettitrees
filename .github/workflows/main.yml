@@ -6,9 +6,9 @@ name: build
 on:
   # Triggers the workflow on push or pull request events but only for the 1.18-dev branch
   push:
-    branches: [ 1.18-dev ]
+    branches: [ 1.18-stable ]
   pull_request:
-    branches: [ 1.18-dev ]
+    branches: [ 1.18-stable ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
