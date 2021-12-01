@@ -21,6 +21,7 @@ import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
+import org.lwjgl.system.CallbackI;
 
 import java.util.List;
 
@@ -51,13 +52,15 @@ public class BetterTreesConfiguredFeatures {
     public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_OAK_REGULAR_BEES = Feature.TREE.configure(oakBuilder(false).decorators(ImmutableList.of(BEES_REGULAR)).build());
     public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_OAK_MORE_BEES = Feature.TREE.configure(oakBuilder(false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH = Feature.TREE.configure(birchBuilder(false).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH = Feature.TREE.configure(birchBuilder(false, false).build());
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_DEAD_BIRCH = Feature.TREE.configure(birchBuilder(true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_DEAD_BIRCH = Feature.TREE.configure(birchBuilder(false, true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_TALL_DEAD_BIRCH = Feature.TREE.configure(birchBuilder(true, true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_RARE_BEES = Feature.TREE.configure(birchBuilder(false).decorators(ImmutableList.of(BEES_RARE)).build());
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_REGULAR_BEES = Feature.TREE.configure(birchBuilder(false).decorators(ImmutableList.of(BEES_REGULAR)).build());
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_MORE_BEES = Feature.TREE.configure(birchBuilder(false).decorators(ImmutableList.of(BEES_COMMON)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_RARE_BEES = Feature.TREE.configure(birchBuilder(false, false).decorators(ImmutableList.of(BEES_RARE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_TALL_BETTER_BIRCH_RARE_BEES = Feature.TREE.configure(birchBuilder(true, false).decorators(ImmutableList.of(BEES_RARE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_REGULAR_BEES = Feature.TREE.configure(birchBuilder(false, false).decorators(ImmutableList.of(BEES_REGULAR)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> TREE_BETTER_BIRCH_MORE_BEES = Feature.TREE.configure(birchBuilder(false, false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
     public static final ConfiguredFeature<RandomFeatureConfig, ?> BETTER_FOREST_TREES = Feature.RANDOM_SELECTOR.configure(
             new RandomFeatureConfig(
@@ -86,6 +89,19 @@ public class BetterTreesConfiguredFeatures {
                     BetterTreesPlacedFeatures.TREE_BETTER_BIRCH_RARE_BEES
             )
     );
+
+    public static final ConfiguredFeature<RandomFeatureConfig, ?> BETTER_TALL_BIRCH_FOREST_TREES = Feature.RANDOM_SELECTOR.configure(
+            new RandomFeatureConfig(
+                    List.of(
+                            new RandomFeatureEntry(BetterTreesPlacedFeatures.DEAD_BIRCH_LOG, 0.22f),
+                            new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_TALL_DEAD_BIRCH, 0.03f),
+                            new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH, 0.1f),
+                            new RandomFeatureEntry(BetterTreesPlacedFeatures.BIRCH_STUMP, 0.04f)
+                    ),
+                    BetterTreesPlacedFeatures.TREE_TALL_BETTER_BIRCH_RARE_BEES
+            )
+    );
+
     public static final ConfiguredFeature<RandomFeatureConfig, ?> BETTER_DARK_FOREST_VEGETATION_BROWN = Feature.RANDOM_SELECTOR.configure(
             new RandomFeatureConfig(
                     List.of(
@@ -164,12 +180,15 @@ public class BetterTreesConfiguredFeatures {
 
         RegistryKey<ConfiguredFeature<?, ?>> treeBetterBirch = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch"));
         RegistryKey<ConfiguredFeature<?, ?>> treeDeadBirch = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "dead_birch"));
+        RegistryKey<ConfiguredFeature<?, ?>> treeTallDeadBirch = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "tall_dead_birch"));
         RegistryKey<ConfiguredFeature<?, ?>> treeBetterBirchRareBees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_rare_bees"));
+        RegistryKey<ConfiguredFeature<?, ?>> treeTallBetterBirchRareBees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_tall_birch_rare_bees"));
         RegistryKey<ConfiguredFeature<?, ?>> treeBetterBirchRegularBees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_regular_bees"));
         RegistryKey<ConfiguredFeature<?, ?>> treeBetterBirchMoreBees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_more_bees"));
 
         RegistryKey<ConfiguredFeature<?, ?>> betterForestTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_forest_trees"));
         RegistryKey<ConfiguredFeature<?, ?>> betterBirchForestTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_forest_trees"));
+        RegistryKey<ConfiguredFeature<?, ?>> betterTallBirchForestTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_tall_birch_forest_trees"));
         RegistryKey<ConfiguredFeature<?, ?>> betterDarkForestVegetationBrown = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_dark_forest_vegetation_brown"));
         RegistryKey<ConfiguredFeature<?, ?>> betterBambooJungleVegetation = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_bamboo_jungle_vegetation"));
         RegistryKey<ConfiguredFeature<?, ?>> betterJungleTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("spaghettitrees", "better_jungle_trees"));
@@ -191,13 +210,16 @@ public class BetterTreesConfiguredFeatures {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeBetterOakMoreBees.getValue(), TREE_BETTER_OAK_MORE_BEES);
 
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeBetterBirch.getValue(), TREE_BETTER_BIRCH);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeTallDeadBirch.getValue(), TREE_TALL_DEAD_BIRCH);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeDeadBirch.getValue(), TREE_DEAD_BIRCH);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeBetterBirchRareBees.getValue(), TREE_BETTER_BIRCH_RARE_BEES);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeTallBetterBirchRareBees.getValue(), TREE_TALL_BETTER_BIRCH_RARE_BEES);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeBetterBirchRegularBees.getValue(), TREE_BETTER_BIRCH_REGULAR_BEES);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, treeBetterBirchMoreBees.getValue(), TREE_BETTER_BIRCH_MORE_BEES);
 
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterForestTrees.getValue(), BETTER_FOREST_TREES);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterBirchForestTrees.getValue(), BETTER_BIRCH_FOREST_TREES);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterTallBirchForestTrees.getValue(), BETTER_TALL_BIRCH_FOREST_TREES);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterDarkForestVegetationBrown.getValue(), BETTER_DARK_FOREST_VEGETATION_BROWN);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterBambooJungleVegetation.getValue(), BETTER_BAMBOO_JUNGLE_VEGETATION);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, betterJungleTrees.getValue(), BETTER_JUNGLE_TREES);
@@ -216,10 +238,10 @@ public class BetterTreesConfiguredFeatures {
         );
     }
 
-    private static TreeFeatureConfig.Builder birchBuilder(boolean dead) {
+    private static TreeFeatureConfig.Builder birchBuilder(boolean tall, boolean dead) {
         return new TreeFeatureConfig.Builder(
                 SimpleBlockStateProviderInvoker.invokeCtor(Blocks.BIRCH_LOG.getDefaultState()),
-                new BetterTrunkPlacer(5, 3, 0, 0.75D, 2D, 2, 5, 0D, 1D, 0.45D, 1D),
+                new BetterTrunkPlacer(tall ? 10 : 5, tall ? 10 : 3, 0, 0.75D, 2D, 2, 5, 0D, 1D, 0.45D, 1D),
                 SimpleBlockStateProviderInvoker.invokeCtor((dead ? Blocks.AIR : Blocks.BIRCH_LEAVES).getDefaultState()),
                 new LargeOakFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(0), 2),
                 new TwoLayersFeatureSize(5, 0, 10)
