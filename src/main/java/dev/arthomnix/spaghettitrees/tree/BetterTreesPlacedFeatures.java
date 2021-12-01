@@ -12,6 +12,7 @@ import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import org.lwjgl.system.CallbackI;
 
 public class BetterTreesPlacedFeatures {
     // Tried to split generating a new PlacedFeature from a ConfiguredFeature out into a function.
@@ -119,7 +120,23 @@ public class BetterTreesPlacedFeatures {
             )
     ));
 
+    public static final PlacedFeature TREE_TALL_DEAD_BIRCH = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_TALL_DEAD_BIRCH, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
     public static final PlacedFeature TREE_BETTER_BIRCH_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_RARE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    ));
+
+    public static final PlacedFeature TREE_TALL_BETTER_BIRCH_RARE_BEES = new PlacedFeature(() -> BetterTreesConfiguredFeatures.TREE_TALL_BETTER_BIRCH_RARE_BEES, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
                             Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
@@ -156,6 +173,12 @@ public class BetterTreesPlacedFeatures {
     );
 
     public static final PlacedFeature BETTER_BIRCH_FOREST_TREES = BetterTreesConfiguredFeatures.BETTER_BIRCH_FOREST_TREES.withPlacement(
+            VegetationPlacedFeatures.modifiers(
+                    PlacedFeatures.createCountExtraModifier(8, 0.1f, 1)
+            )
+    );
+
+    public static final PlacedFeature BETTER_TALL_BIRCH_FOREST_TREES = BetterTreesConfiguredFeatures.BETTER_TALL_BIRCH_FOREST_TREES.withPlacement(
             VegetationPlacedFeatures.modifiers(
                     PlacedFeatures.createCountExtraModifier(8, 0.1f, 1)
             )
@@ -262,13 +285,16 @@ public class BetterTreesPlacedFeatures {
 
         RegistryKey<PlacedFeature> treeBetterBirch = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch"));
         RegistryKey<PlacedFeature> treeDeadBirch = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "dead_birch"));
+        RegistryKey<PlacedFeature> treeTallDeadBirch = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "tall_dead_birch"));
         RegistryKey<PlacedFeature> treeBetterBirchRareBees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_rare_bees"));
+        RegistryKey<PlacedFeature> treeTallBetterBirchRareBees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "tall_better_birch_rare_bees"));
         RegistryKey<PlacedFeature> treeBetterBirchRegularBees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_regular_bees"));
         RegistryKey<PlacedFeature> treeBetterBirchMoreBees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_more_bees"));
 
         RegistryKey<PlacedFeature> betterForestTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_forest_trees"));
         RegistryKey<PlacedFeature> betterFlowerForestTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_flower_forest_trees"));
         RegistryKey<PlacedFeature> betterBirchForestTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_birch_forest_trees"));
+        RegistryKey<PlacedFeature> betterTallBirchForestTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_tall_birch_forest_trees"));
         RegistryKey<PlacedFeature> betterPlainsTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_plains_trees"));
         RegistryKey<PlacedFeature> betterWaterBiomeTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_water_biome_trees"));
         RegistryKey<PlacedFeature> betterDarkForestVegetation = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("spaghettitrees", "better_dark_forest_vegetation"));
@@ -297,13 +323,16 @@ public class BetterTreesPlacedFeatures {
 
         Registry.register(BuiltinRegistries.PLACED_FEATURE, treeBetterBirch.getValue(), TREE_BETTER_BIRCH);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, treeDeadBirch.getValue(), TREE_DEAD_BIRCH);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, treeTallDeadBirch.getValue(), TREE_TALL_DEAD_BIRCH);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, treeBetterBirchRareBees.getValue(), TREE_BETTER_BIRCH_RARE_BEES);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, treeTallBetterBirchRareBees.getValue(), TREE_TALL_BETTER_BIRCH_RARE_BEES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, treeBetterBirchRegularBees.getValue(), TREE_BETTER_BIRCH_REGULAR_BEES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, treeBetterBirchMoreBees.getValue(), TREE_BETTER_BIRCH_MORE_BEES);
 
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterForestTrees.getValue(), BETTER_FOREST_TREES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterFlowerForestTrees.getValue(), BETTER_FLOWER_FOREST_TREES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterBirchForestTrees.getValue(), BETTER_BIRCH_FOREST_TREES);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, betterTallBirchForestTrees.getValue(), BETTER_TALL_BIRCH_FOREST_TREES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterPlainsTrees.getValue(), BETTER_PLAINS_TREES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterWaterBiomeTrees.getValue(), BETTER_WATER_BIOME_TREES);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, betterDarkForestVegetation.getValue(), BETTER_DARK_FOREST_VEGETATION);
