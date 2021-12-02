@@ -21,7 +21,6 @@ import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-import org.lwjgl.system.CallbackI;
 
 import java.util.List;
 
@@ -34,11 +33,11 @@ public class BetterTreesConfiguredFeatures {
     private static final BeehiveTreeDecorator BEES_REGULAR = new BeehiveTreeDecorator(0.02f);
     private static final BeehiveTreeDecorator BEES_COMMON = new BeehiveTreeDecorator(0.05f);
     // all our features
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> DEAD_OAK_LOG = Feature.TREE.configure(deadLogBuilder(Blocks.OAK_LOG).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> DEAD_BIRCH_LOG = Feature.TREE.configure(deadLogBuilder(Blocks.BIRCH_LOG).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> DEAD_OAK_LOG = Feature.TREE.configure(deadLogBuilder(Blocks.OAK_WOOD).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> DEAD_BIRCH_LOG = Feature.TREE.configure(deadLogBuilder(Blocks.BIRCH_WOOD).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> OAK_STUMP = Feature.TREE.configure(stumpBuilder(Blocks.OAK_LOG).build());
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> BIRCH_STUMP = Feature.TREE.configure(stumpBuilder(Blocks.BIRCH_LOG).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> OAK_STUMP = Feature.TREE.configure(stumpBuilder(Blocks.OAK_WOOD).build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> BIRCH_STUMP = Feature.TREE.configure(stumpBuilder(Blocks.BIRCH_WOOD).build());
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> UNDERGROWTH_BUSH = Feature.TREE.configure(bushBuilder().build());
 
@@ -230,7 +229,7 @@ public class BetterTreesConfiguredFeatures {
 
     private static TreeFeatureConfig.Builder oakBuilder(boolean dead) {
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LOG.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_WOOD.getDefaultState()),
                 new BetterTrunkPlacer(6, 6, 0, 0.85D, 1.25D, 0, 5, 0D, 1D, 0.3D, 0.95D),
                 SimpleBlockStateProviderInvoker.invokeCtor((dead ? Blocks.AIR : Blocks.OAK_LEAVES).getDefaultState()),
                 new LargeOakFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(0), 2),
@@ -240,7 +239,7 @@ public class BetterTreesConfiguredFeatures {
 
     private static TreeFeatureConfig.Builder birchBuilder(boolean tall, boolean dead) {
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.BIRCH_LOG.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.BIRCH_WOOD.getDefaultState()),
                 new BetterTrunkPlacer(tall ? 10 : 5, tall ? 10 : 3, 0, 0.75D, 2D, 2, 5, 0D, 1D, 0.45D, 1D),
                 SimpleBlockStateProviderInvoker.invokeCtor((dead ? Blocks.AIR : Blocks.BIRCH_LEAVES).getDefaultState()),
                 new LargeOakFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(0), 2),
@@ -270,7 +269,7 @@ public class BetterTreesConfiguredFeatures {
 
     private static TreeFeatureConfig.Builder bushBuilder() {
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LOG.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_WOOD.getDefaultState()),
                 new StraightTrunkPlacer(1, 1, 0),
                 SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LEAVES.getDefaultState()),
                 new BushFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(1), 2),
