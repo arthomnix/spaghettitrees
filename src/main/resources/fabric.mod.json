@@ -3,9 +3,13 @@
   "id": "spaghettitrees",
   "version": "${version}",
   "name": "SpaghettiTrees",
-  "description": "Custom tree generation",
-  "authors": ["arthomnix"],
-  "contact": {},
+  "description": "Mildly cursed custom tree generation mod",
+  "authors": [{"name":  "arthomnix", "homepage":  "https://github.com/arthomnix"}],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/spaghettitrees",
+    "issues": "https://github.com/arthomnix/spaghettitrees/issues",
+    "sources": "https://github.com/arthomnix/spaghettitrees"
+  },
   "license": "MIT",
   "icon": "assets/spaghettitrees/icon.png",
   "environment": "*",
