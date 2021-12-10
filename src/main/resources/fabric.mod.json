@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "SpaghettiTrees",
   "description": "Mildly cursed custom tree generation mod",
-  "authors": [{"name":  "arthomnix", "homepage":  "https://github.com/arthomnix"}],
+  "authors": [{"name":  "arthomnix", "contact": {"homepage":  "https://github.com/arthomnix"}}],
   "contact": {
     "homepage": "https://modrinth.com/mod/spaghettitrees",
     "issues": "https://github.com/arthomnix/spaghettitrees/issues",
