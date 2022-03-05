@@ -27,7 +27,6 @@ import net.minecraft.world.gen.trunk.TrunkPlacerType;
 import java.util.List;
 
 public class BetterTreesConfiguredFeatures {
-    static { System.out.println("Hi from BetterTreesConfiguredFeatures clinit"); }
     public static final TrunkPlacerType<BetterTrunkPlacer> BETTER_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("better_trunk_placer", BetterTrunkPlacer.CODEC);
     public static final TrunkPlacerType<DeadLogTrunkPlacer> DEAD_LOG_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("dead_log_trunk_placer", DeadLogTrunkPlacer.CODEC);
 
@@ -225,5 +224,4 @@ public class BetterTreesConfiguredFeatures {
                 new TwoLayersFeatureSize(1, 2, 2)
         );
     }
-    static { System.out.println("Hi from BetterTreesConfiguredFeatures clinit end"); }
 }

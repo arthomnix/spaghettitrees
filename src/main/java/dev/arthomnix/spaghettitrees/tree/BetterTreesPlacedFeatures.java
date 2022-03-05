@@ -13,9 +13,6 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 
 public class BetterTreesPlacedFeatures {
-
-    static { System.out.println("Hi from BetterTreesPlacedFeatures clinit"); }
-
     public static final RegistryEntry<PlacedFeature> DEAD_OAK_LOG = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_dead_oak_log"), new PlacedFeature(BetterTreesConfiguredFeatures.DEAD_OAK_LOG, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
@@ -271,6 +268,4 @@ public class BetterTreesPlacedFeatures {
                     Blocks.OAK_SAPLING
             )
     ));
-
-    static { System.out.println("Hi from BetterTreesPlacedFeatures clinit end"); }
 }
