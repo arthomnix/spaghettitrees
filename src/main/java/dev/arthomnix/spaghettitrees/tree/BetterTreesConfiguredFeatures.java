@@ -31,8 +31,9 @@ public class BetterTreesConfiguredFeatures {
     public static final TrunkPlacerType<DeadLogTrunkPlacer> DEAD_LOG_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("dead_log_trunk_placer", DeadLogTrunkPlacer.CODEC);
 
     private static final BeehiveTreeDecorator BEES_RARE = new BeehiveTreeDecorator(0.002f);
-    private static final BeehiveTreeDecorator BEES_REGULAR = new BeehiveTreeDecorator(0.02f);
     private static final BeehiveTreeDecorator BEES_COMMON = new BeehiveTreeDecorator(0.05f);
+    private static final BeehiveTreeDecorator BEES_ALWAYS = new BeehiveTreeDecorator(1f);
+
     // all our features
     public static final RegistryEntry<ConfiguredFeature<?, ?>> DEAD_OAK_LOG = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "dead_oak_log"), Feature.TREE, deadLogBuilder(Blocks.OAK_WOOD).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> DEAD_BIRCH_LOG = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "dead_birch_log"), Feature.TREE, deadLogBuilder(Blocks.BIRCH_WOOD).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
@@ -49,7 +50,7 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_SWAMP_OAK = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_swamp_oak"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_rare_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_RARE)).build());
-    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_REGULAR_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_regular_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_REGULAR)).build());
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_regular_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_MORE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_more_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch"), Feature.TREE, birchBuilder(false, false).build());
@@ -58,8 +59,8 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_TALL_DEAD_BIRCH = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_tall_dead_birch"), Feature.TREE, birchBuilder(true, true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_rare_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_RARE)).build());
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_regular_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_TALL_BETTER_BIRCH_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_tall_better_birch_rare_bees"), Feature.TREE, birchBuilder(true, false).decorators(ImmutableList.of(BEES_RARE)).build());
-    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_REGULAR_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_regular_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_REGULAR)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_MORE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_more_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_FOREST_TREES;
@@ -71,6 +72,7 @@ public class BetterTreesConfiguredFeatures {
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_SPARSE_JUNGLE_TREES;
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_SAVANNAH_TREES;
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_MOUNTAIN_TREES;
+    public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_MEADOW_TREES;
 
     protected static void registerBiomeTreeFeatures() {
         BETTER_FOREST_TREES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "better_forest_trees"), Feature.RANDOM_SELECTOR,
@@ -171,6 +173,15 @@ public class BetterTreesConfiguredFeatures {
                                 new RandomFeatureEntry(TreePlacedFeatures.SPRUCE_CHECKED, 2f / 3f)
                         ),
                         BetterTreesPlacedFeatures.TREE_BETTER_OAK
+                )
+        );
+
+        BETTER_MEADOW_TREES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "better_meadow_trees"), Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfig(
+                        List.of(
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_BETTER_OAK_BEES, 0.5f)
+                        ),
+                        BetterTreesPlacedFeatures.TREE_BETTER_BIRCH_BEES
                 )
         );
     }

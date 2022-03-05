@@ -77,6 +77,14 @@ public class BetterTreesPlacedFeatures {
             )
     )));
 
+    public static final RegistryEntry<PlacedFeature> TREE_BETTER_OAK_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_oak_regular_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_OAK_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    )));
+
     public static final RegistryEntry<PlacedFeature> TREE_BETTER_BIRCH = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_birch"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
@@ -102,6 +110,14 @@ public class BetterTreesPlacedFeatures {
     )));
 
     public static final RegistryEntry<PlacedFeature> TREE_BETTER_BIRCH_RARE_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_birch_rare_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_RARE_BEES, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    )));
+
+    public static final RegistryEntry<PlacedFeature> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_birch_regular_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_BEES, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
                             Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN
@@ -227,6 +243,12 @@ public class BetterTreesPlacedFeatures {
             VegetationPlacedFeatures.modifiersWithWouldSurvive(
                     PlacedFeatures.createCountExtraModifier(5, 0.1f, 1),
                     Blocks.OAK_SAPLING
+            )
+    ));
+
+    public static final RegistryEntry<PlacedFeature> BETTER_MEADOW_TREES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_better_meadow_trees"), new PlacedFeature(BetterTreesConfiguredFeatures.BETTER_MEADOW_TREES,
+            VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(100)
             )
     ));
 }
