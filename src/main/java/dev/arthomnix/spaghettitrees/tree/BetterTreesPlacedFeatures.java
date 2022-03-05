@@ -77,7 +77,7 @@ public class BetterTreesPlacedFeatures {
             )
     )));
 
-    public static final RegistryEntry<PlacedFeature> TREE_BETTER_OAK_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_oak_regular_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_OAK_BEES, ImmutableList.of(
+    public static final RegistryEntry<PlacedFeature> TREE_BETTER_OAK_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_oak_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_OAK_BEES, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
                             Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
@@ -117,7 +117,7 @@ public class BetterTreesPlacedFeatures {
             )
     )));
 
-    public static final RegistryEntry<PlacedFeature> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_birch_regular_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_BEES, ImmutableList.of(
+    public static final RegistryEntry<PlacedFeature> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_tree_better_birch_bees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_BIRCH_BEES, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
                             Blocks.BIRCH_SAPLING.getDefaultState(), BlockPos.ORIGIN

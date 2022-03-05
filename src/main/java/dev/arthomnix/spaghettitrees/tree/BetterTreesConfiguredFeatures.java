@@ -50,7 +50,7 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_SWAMP_OAK = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_swamp_oak"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_rare_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_RARE)).build());
-    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_regular_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_MORE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak_more_bees"), Feature.TREE, oakBuilder(false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch"), Feature.TREE, birchBuilder(false, false).build());
@@ -59,7 +59,7 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_TALL_DEAD_BIRCH = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_tall_dead_birch"), Feature.TREE, birchBuilder(true, true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_rare_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_RARE)).build());
-    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_regular_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_ALWAYS)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_TALL_BETTER_BIRCH_RARE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_tall_better_birch_rare_bees"), Feature.TREE, birchBuilder(true, false).decorators(ImmutableList.of(BEES_RARE)).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_BIRCH_MORE_BEES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_birch_more_bees"), Feature.TREE, birchBuilder(false, false).decorators(ImmutableList.of(BEES_COMMON)).build());
 
