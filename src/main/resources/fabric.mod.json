@@ -13,17 +13,12 @@
   "license": "MIT",
   "icon": "assets/spaghettitrees/icon.png",
   "environment": "*",
-  "entrypoints": {
-    "main": [
-      "dev.arthomnix.spaghettitrees.SpaghettiTrees"
-    ]
-  },
+  "entrypoints": {},
   "mixins": [
     "spaghettitrees.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.9",
-    "fabric": "*",
-    "minecraft": "1.18.*"
+    "fabricloader": ">=0.13.0",
+    "minecraft": ">=1.18.2 <1.19"
   }
 }
