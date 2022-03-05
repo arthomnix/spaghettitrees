@@ -12,7 +12,6 @@ import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
-import org.lwjgl.system.CallbackI;
 
 public class BetterTreesPlacedFeatures {
     // Tried to split generating a new PlacedFeature from a ConfiguredFeature out into a function.

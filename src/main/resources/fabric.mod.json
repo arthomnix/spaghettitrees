@@ -22,8 +22,11 @@
     "spaghettitrees.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.9",
+    "fabricloader": ">=0.13.0",
     "fabric": "*",
-    "minecraft": "1.18.*"
+    "minecraft": [
+      ">=1.18 <1.18.2",
+      "1.19-Experimental.1"
+    ]
   }
 }
