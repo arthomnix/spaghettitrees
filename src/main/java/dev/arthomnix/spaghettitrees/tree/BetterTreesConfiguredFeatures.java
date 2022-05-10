@@ -25,6 +25,8 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 import java.util.List;
+import java.util.Random; // Needed for the bush variation code to function correctly
+
 
 public class BetterTreesConfiguredFeatures {
     public static final TrunkPlacerType<BetterTrunkPlacer> BETTER_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("better_trunk_placer", BetterTrunkPlacer.CODEC);
@@ -41,7 +43,18 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> OAK_STUMP = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "oak_stump"), Feature.TREE, stumpBuilder(Blocks.OAK_WOOD).build());
     public static final RegistryEntry<ConfiguredFeature<?, ?>> BIRCH_STUMP = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "birch_stump"), Feature.TREE, stumpBuilder(Blocks.BIRCH_WOOD).build());
 
-    public static final RegistryEntry<ConfiguredFeature<?, ?>> UNDERGROWTH_BUSH = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "undergrowth_bush"), Feature.TREE, bushBuilder().build());
+    /*
+    
+        UNDERGROWTH_BUSH has been extended to three variants (_ONE, _TWO, _THREE) so that they have more visual variation in forests.  Same for the placed_undergrowth_bush.  The reason there are multiple representations and calls is because the random() call in the bushBuilder() only triggers once for the worldgen otherwise.  This makes for great variation BETWEEN worlds, but not WITHIN worlds.
+    
+    */
+
+   
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> UNDERGROWTH_BUSH_ONE = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "undergrowth_bush_one"), Feature.TREE, bushBuilder().build());
+    
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> UNDERGROWTH_BUSH_TWO = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "undergrowth_bush_two"), Feature.TREE, bushBuilder().build());
+
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> UNDERGROWTH_BUSH_THREE = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "undergrowth_bush_three"), Feature.TREE, bushBuilder().build());
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "tree_better_oak"), Feature.TREE, oakBuilder(false).build());
 
@@ -74,6 +87,12 @@ public class BetterTreesConfiguredFeatures {
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_MOUNTAIN_TREES;
     public static RegistryEntry<ConfiguredFeature<?, ?>> BETTER_MEADOW_TREES;
 
+    /*
+    
+        The default UNDERGROWTH_BUSH in forest spawn value was 0.2f.  This is now split across three variants with equal proportional weighting.
+    
+    */
+    
     protected static void registerBiomeTreeFeatures() {
         BETTER_FOREST_TREES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "better_forest_trees"), Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(
@@ -83,7 +102,9 @@ public class BetterTreesConfiguredFeatures {
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.DEAD_BIRCH_LOG, 0.1f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_DEAD_OAK, 0.024f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_DEAD_BIRCH, 0.006f),
-                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH, 0.2f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_ONE, 0.07f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_TWO, 0.07f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_THREE, 0.07f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.OAK_STUMP, 0.032f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.BIRCH_STUMP, 0.008f)
                         ),
@@ -91,12 +112,19 @@ public class BetterTreesConfiguredFeatures {
                 )
         );
 
+    /*
+    
+        The default UNDERGROWTH_BUSH in forest spawn value was 0.1f.  This is now split across two variants with equal proportional weighting.
+    
+    */
+        
         BETTER_BIRCH_FOREST_TREES = RegistryUtil.registerConfiguredFeature(new Identifier("spaghettitrees", "better_birch_forest_trees"), Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(
                         List.of(
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.DEAD_BIRCH_LOG, 0.22f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_DEAD_BIRCH, 0.03f),
-                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH, 0.1f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_ONE, 0.05f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_TWO, 0.05f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.BIRCH_STUMP, 0.04f)
                         ),
                         BetterTreesPlacedFeatures.TREE_BETTER_BIRCH_RARE_BEES
@@ -108,7 +136,7 @@ public class BetterTreesConfiguredFeatures {
                         List.of(
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.DEAD_BIRCH_LOG, 0.22f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.TREE_TALL_DEAD_BIRCH, 0.03f),
-                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH, 0.1f),
+                                new RandomFeatureEntry(BetterTreesPlacedFeatures.UNDERGROWTH_BUSH_ONE, 0.1f),
                                 new RandomFeatureEntry(BetterTreesPlacedFeatures.BIRCH_STUMP, 0.04f)
                         ),
                         BetterTreesPlacedFeatures.TREE_TALL_BETTER_BIRCH_RARE_BEES
@@ -186,9 +214,10 @@ public class BetterTreesConfiguredFeatures {
         );
     }
 
+    // Changed the block type from OAK_WOOD to OAK_LOG, as it is impossible to generate planks from OAK_WOOD
     private static TreeFeatureConfig.Builder oakBuilder(boolean dead) {
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_WOOD.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LOG.getDefaultState()),
                 new BetterTrunkPlacer(6, 6, 0, 0.85D, 1.25D, 0, 5, 0D, 1D, 0.3D, 0.95D),
                 SimpleBlockStateProviderInvoker.invokeCtor((dead ? Blocks.AIR : Blocks.OAK_LEAVES).getDefaultState()),
                 new LargeOakFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(0), 2),
@@ -196,9 +225,11 @@ public class BetterTreesConfiguredFeatures {
         );
     }
 
+    
+    // Changed the block type from BIRCH_WOOD to BIRCH_LOG, as it is impossible to generate planks from BIRCH_WOOD
     private static TreeFeatureConfig.Builder birchBuilder(boolean tall, boolean dead) {
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.BIRCH_WOOD.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.BIRCH_LOG.getDefaultState()),
                 new BetterTrunkPlacer(tall ? 10 : 5, tall ? 10 : 3, 0, 0.75D, 2D, 2, 5, 0D, 1D, 0.45D, 1D),
                 SimpleBlockStateProviderInvoker.invokeCtor((dead ? Blocks.AIR : Blocks.BIRCH_LEAVES).getDefaultState()),
                 new LargeOakFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(0), 2),
@@ -227,10 +258,26 @@ public class BetterTreesConfiguredFeatures {
     }
 
     private static TreeFeatureConfig.Builder bushBuilder() {
+ 
+        /*
+        
+            The type invoked within the Buiilder is a Block, so we make an array of Blocks named correctly.  One for variants in stump types, and one for variants in leaves.  The availabilty of Azalea leaves makes for some really pretty bushes, but to have them 100% of bushes is overwhelming.
+        
+        */
+
+        
+        Block[] stumps = {Blocks.DEAD_BUSH, Blocks.JUNGLE_LOG, Blocks.ACACIA_LOG};
+        Block[] bush_leaves = {Blocks.AZALEA_LEAVES, Blocks.FLOWERING_AZALEA_LEAVES, Blocks.JUNGLE_LEAVES};
+ 
+        
+        // Take a random stump and leaf variant from the Block arrays.
+        Block bush_stump = (stumps[new Random().nextInt(stumps.length)]);
+        Block bush_leaf = (bush_leaves[new Random().nextInt(bush_leaves.length)]);
+
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_WOOD.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(bush_stump.getDefaultState()),
                 new StraightTrunkPlacer(1, 1, 0),
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LEAVES.getDefaultState()),
+                SimpleBlockStateProviderInvoker.invokeCtor(bush_leaf.getDefaultState()),
                 new BushFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(1), 2),
                 new TwoLayersFeatureSize(1, 2, 2)
         );
