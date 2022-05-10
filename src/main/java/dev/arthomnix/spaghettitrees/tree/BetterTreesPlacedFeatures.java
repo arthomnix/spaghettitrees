@@ -45,7 +45,27 @@ public class BetterTreesPlacedFeatures {
             )
     )));
 
-    public static final RegistryEntry<PlacedFeature> UNDERGROWTH_BUSH = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_undergrowth_bush"), new PlacedFeature(BetterTreesConfiguredFeatures.UNDERGROWTH_BUSH, ImmutableList.of(
+   /*
+    
+        UNDERGROWTH_BUSH has been extended to three variants (_ONE, _TWO, _THREE) so that they have more visual variation in forests.  Same for the placed_undergrowth_bush
+    
+    */
+    
+    public static final RegistryEntry<PlacedFeature> UNDERGROWTH_BUSH_ONE = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_undergrowth_bush_one"), new PlacedFeature(BetterTreesConfiguredFeatures.UNDERGROWTH_BUSH_ONE, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    )));
+    public static final RegistryEntry<PlacedFeature> UNDERGROWTH_BUSH_TWO = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_undergrowth_bush_two"), new PlacedFeature(BetterTreesConfiguredFeatures.UNDERGROWTH_BUSH_TWO, ImmutableList.of(
+            BlockFilterPlacementModifier.of(
+                    BlockPredicate.wouldSurvive(
+                            Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
+                    )
+            )
+    )));
+    public static final RegistryEntry<PlacedFeature> UNDERGROWTH_BUSH_THREE = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_undergrowth_bush_three"), new PlacedFeature(BetterTreesConfiguredFeatures.UNDERGROWTH_BUSH_THREE, ImmutableList.of(
             BlockFilterPlacementModifier.of(
                     BlockPredicate.wouldSurvive(
                             Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN
