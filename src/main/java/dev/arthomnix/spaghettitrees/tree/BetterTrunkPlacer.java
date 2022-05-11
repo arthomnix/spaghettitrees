@@ -99,7 +99,9 @@ public class BetterTrunkPlacer extends TrunkPlacer {
             this.direction = direction;
             this.maxLevel = maxLevel;
             this.leftBias = leftBias;
-            if(this.direction.getAxis() == Direction.Axis.Y) this.upBias = this.leftBias; // If the branch is generating up or down, all directions use the leftBias
+            if (this.direction.getAxis() == Direction.Axis.Y) {
+                this.upBias = this.leftBias; // If the branch is generating up or down, all directions use the leftBias
+            }
             else this.upBias = upBias;
             this.bendiness = bendiness;
             this.nodesAllAlong = nodesAllAlong;
@@ -116,20 +118,27 @@ public class BetterTrunkPlacer extends TrunkPlacer {
             List<FoliagePlacer.TreeNode> list = new ArrayList<>();
             for (int i = 0; i < length; ++i) {
                 // makes branches look more joined up
-                if(i > 0) getAndSetState(world, replacer, random, bendPos(startPos, i - 1), config, blockState -> blockState.with(PillarBlock.AXIS, direction.getAxis()));
+                if (i > 0) {
+                    getAndSetState(world, replacer, random, bendPos(startPos, i - 1), config, blockState -> blockState.with(PillarBlock.AXIS, direction.getAxis()));
+                }
                 // set the block
                 getAndSetState(world, replacer, random, bendPos(startPos, i), config, blockState -> blockState.with(PillarBlock.AXIS, direction.getAxis()));
                 // add foliage nodes
-                if(nodesAllAlong && (random.nextDouble() < 0.75 || i == length - 1))
+                if(nodesAllAlong && (random.nextDouble() < 0.75 || i == length - 1)) {
                     list.add(new FoliagePlacer.TreeNode(bendPos(startPos, i).up(), 0, false));
-                else if(i == (length - 1) && level == 0) // generate more leaves at the top of the trunk
+                } else if (i == (length - 1) && level == 0) { // generate more leaves at the top of the trunk
                     list.add(new FoliagePlacer.TreeNode(bendPos(startPos, i).up(), 2, false));
+                }
                 updateBend();
                 // generates a sub-branch
                 if ((random.nextDouble() < getBranchProbability(i, length, branchProbabilityModifier, clampBelow)) && (level < maxLevel)) {
                     int newLength = length - (random.nextInt(2) + 1);
-                    if(level == 0) newLength = newLength - initialBranchLengthModifier;
-                    else newLength = newLength - branchLengthModifier;
+                    if (level == 0) {
+                        newLength = newLength - initialBranchLengthModifier;
+                    }
+                    else {
+                        newLength = newLength - branchLengthModifier;
+                    }
                     Direction newDirection = chooseFromAllowedDirections();
                     BlockPos newEndPos = bendPos(startPos, i).offset(newDirection, newLength);
                     int newBranchHeight = newEndPos.getY() - rootPos.getY();
@@ -192,7 +201,7 @@ public class BetterTrunkPlacer extends TrunkPlacer {
             } else return modifier / subBranchProbabilityDivisor;
         }
 
-        private double gaussian(double x, double a, double b, double c) {
+        private static double gaussian(double x, double a, double b, double c) {
             return a * Math.exp(-((Math.pow(x-b, 2))/(2*Math.pow(c, 2))));
         }
 

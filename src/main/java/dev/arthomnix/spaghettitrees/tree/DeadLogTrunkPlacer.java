@@ -16,8 +16,9 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class DeadLogTrunkPlacer extends BetterTrunkPlacer {
-    public static final Codec<DeadLogTrunkPlacer> CODEC = RecordCodecBuilder.create(instance ->
-            fillTrunkPlacerFields(instance).apply(instance, DeadLogTrunkPlacer::new));
+    public static final Codec<DeadLogTrunkPlacer> CODEC = RecordCodecBuilder.create(
+            instance -> fillTrunkPlacerFields(instance).apply(instance, DeadLogTrunkPlacer::new)
+    );
 
     public DeadLogTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
         super(baseHeight, firstRandomHeight, secondRandomHeight, 0.25D, 2D, 2, 6, 0D, 1D, 0D, 1D);
