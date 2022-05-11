@@ -5,19 +5,21 @@ import dev.arthomnix.spaghettitrees.mixin.SimpleBlockStateProviderInvoker;
 import dev.arthomnix.spaghettitrees.mixin.TrunkPlacerTypeInvoker;
 import dev.arthomnix.spaghettitrees.util.RegistryUtil;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.BiasedToBottomIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
+import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
@@ -27,9 +29,25 @@ import net.minecraft.world.gen.trunk.TrunkPlacerType;
 import java.util.List;
 
 public class BetterTreesConfiguredFeatures {
-    public static final TrunkPlacerType<BetterTrunkPlacer> BETTER_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("better_trunk_placer", BetterTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<DeadLogTrunkPlacer> DEAD_LOG_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("dead_log_trunk_placer", DeadLogTrunkPlacer.CODEC);
+    // Trunk placer types
+    public static final TrunkPlacerType<BetterTrunkPlacer> BETTER_TRUNK_PLACER = Registry.register(
+            Registry.TRUNK_PLACER_TYPE,
+            new Identifier("spaghettitrees", "better_trunk_placer"),
+            TrunkPlacerTypeInvoker.invokeCtor(BetterTrunkPlacer.CODEC)
+    );
+    public static final TrunkPlacerType<DeadLogTrunkPlacer> DEAD_LOG_TRUNK_PLACER = Registry.register(
+            Registry.TRUNK_PLACER_TYPE,
+            new Identifier("spaghettitrees", "dead_log_trunk_placer"),
+            TrunkPlacerTypeInvoker.invokeCtor(DeadLogTrunkPlacer.CODEC)
+    );
 
+    public static final TrunkPlacerType<UndergrowthBushTrunkPlacer> UNDERGROWTH_BUSH_TRUNK_PLACER = Registry.register(
+            Registry.TRUNK_PLACER_TYPE,
+            new Identifier("spaghettitrees", "undergrowth_bush_trunk_placer"),
+            TrunkPlacerTypeInvoker.invokeCtor(UndergrowthBushTrunkPlacer.CODEC)
+    );
+
+    // Beehive tree decorators
     private static final BeehiveTreeDecorator BEES_RARE = new BeehiveTreeDecorator(0.002f);
     private static final BeehiveTreeDecorator BEES_COMMON = new BeehiveTreeDecorator(0.05f);
     private static final BeehiveTreeDecorator BEES_ALWAYS = new BeehiveTreeDecorator(1f);
@@ -227,10 +245,24 @@ public class BetterTreesConfiguredFeatures {
     }
 
     private static TreeFeatureConfig.Builder bushBuilder() {
+        DataPool<BlockState> trunkStates = new DataPool.Builder<BlockState>()
+                .add(Blocks.OAK_WOOD.getDefaultState(), 1)
+                .add(Blocks.BIRCH_WOOD.getDefaultState(), 1)
+                .add(Blocks.DARK_OAK_WOOD.getDefaultState(), 1)
+                .build();
+
+        DataPool<BlockState> leafStates = new DataPool.Builder<BlockState>()
+                .add(Blocks.AZALEA_LEAVES.getDefaultState(), 1)
+                .add(Blocks.BIRCH_LEAVES.getDefaultState(), 1)
+                .add(Blocks.DARK_OAK_LEAVES.getDefaultState(), 1)
+                .add(Blocks.FLOWERING_AZALEA_LEAVES.getDefaultState(), 1)
+                .add(Blocks.OAK_LEAVES.getDefaultState(), 1)
+                .build();
+
         return new TreeFeatureConfig.Builder(
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_WOOD.getDefaultState()),
-                new StraightTrunkPlacer(1, 1, 0),
-                SimpleBlockStateProviderInvoker.invokeCtor(Blocks.OAK_LEAVES.getDefaultState()),
+                new WeightedBlockStateProvider(trunkStates),
+                new UndergrowthBushTrunkPlacer(1, 1, 0),
+                new WeightedBlockStateProvider(leafStates),
                 new BushFoliagePlacer(BiasedToBottomIntProvider.create(1, 2), ConstantIntProvider.create(1), 2),
                 new TwoLayersFeatureSize(1, 2, 2)
         );
