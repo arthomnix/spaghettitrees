@@ -2,6 +2,7 @@ package dev.arthomnix.spaghettitrees.tree;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.arthomnix.spaghettitrees.config.SpaghettiTreesConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
@@ -44,6 +45,22 @@ public class BetterTrunkPlacer extends TrunkPlacer {
         this.maxLeftBias = maxLeftBias;
         this.minUpBias = minUpBias;
         this.maxUpBias = maxUpBias;
+    }
+
+    public BetterTrunkPlacer(SpaghettiTreesConfig.TrunkPlacerSettings settings) {
+        this(
+                settings.getBaseHeight(),
+                settings.getFirstRandomHeight(),
+                settings.getSecondRandomHeight(),
+                settings.getBranchProbabilityModifier(),
+                settings.getSubBranchProbabilityDivisor(),
+                settings.getBranchLengthModifier(),
+                settings.getInitialBranchLengthModifier(),
+                settings.getMinLeftBias(),
+                settings.getMaxLeftBias(),
+                settings.getMinUpBias(),
+                settings.getMaxUpBias()
+        );
     }
 
     @Override
