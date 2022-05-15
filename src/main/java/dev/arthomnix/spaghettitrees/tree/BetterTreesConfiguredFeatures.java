@@ -70,6 +70,7 @@ public class BetterTreesConfiguredFeatures {
                     config.useLogsInsteadOfWood ? Blocks.OAK_LOG : Blocks.OAK_WOOD
             ).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build()
     );
+
     public static final RegistryEntry<ConfiguredFeature<?, ?>> DEAD_BIRCH_LOG = RegistryUtil.registerConfiguredFeature(
             new Identifier("spaghettitrees", "dead_birch_log"),
             Feature.TREE,
@@ -123,11 +124,13 @@ public class BetterTreesConfiguredFeatures {
             Feature.TREE,
             oakBuilder(false).decorators(ImmutableList.of(BEES_RARE)).build()
     );
+
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_BEES = RegistryUtil.registerConfiguredFeature(
             new Identifier("spaghettitrees", "tree_better_oak_bees"),
             Feature.TREE,
             oakBuilder(false).decorators(ImmutableList.of(BEES_ALWAYS)).build()
     );
+
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_MORE_BEES = RegistryUtil.registerConfiguredFeature(
             new Identifier("spaghettitrees", "tree_better_oak_more_bees"),
             Feature.TREE,
@@ -145,6 +148,7 @@ public class BetterTreesConfiguredFeatures {
             Feature.TREE,
             birchBuilder(false, true).decorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE)).build()
     );
+
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_TALL_DEAD_BIRCH = RegistryUtil.registerConfiguredFeature(
             new Identifier("spaghettitrees", "tree_tall_dead_birch"),
             Feature.TREE,
