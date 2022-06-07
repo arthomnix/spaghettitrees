@@ -1,4 +1,4 @@
-package dev.arthomnix.spaghettitrees.mixin;
+package dev.arthomnix.spaghettitrees.mixin.invoker;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

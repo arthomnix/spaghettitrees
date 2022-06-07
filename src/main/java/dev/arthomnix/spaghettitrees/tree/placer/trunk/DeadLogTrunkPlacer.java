@@ -1,9 +1,10 @@
-package dev.arthomnix.spaghettitrees.tree;
+package dev.arthomnix.spaghettitrees.tree.placer.trunk;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.arthomnix.spaghettitrees.config.SpaghettiTreesConfig;
+import dev.arthomnix.spaghettitrees.tree.feature.BetterTreesConfiguredFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;

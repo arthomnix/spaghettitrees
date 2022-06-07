@@ -1,9 +1,12 @@
-package dev.arthomnix.spaghettitrees.tree;
+package dev.arthomnix.spaghettitrees.tree.feature;
 
 import com.google.common.collect.ImmutableList;
 import dev.arthomnix.spaghettitrees.config.SpaghettiTreesConfig;
-import dev.arthomnix.spaghettitrees.mixin.SimpleBlockStateProviderInvoker;
-import dev.arthomnix.spaghettitrees.mixin.TrunkPlacerTypeInvoker;
+import dev.arthomnix.spaghettitrees.mixin.invoker.SimpleBlockStateProviderInvoker;
+import dev.arthomnix.spaghettitrees.mixin.invoker.TrunkPlacerTypeInvoker;
+import dev.arthomnix.spaghettitrees.tree.placer.trunk.BetterTrunkPlacer;
+import dev.arthomnix.spaghettitrees.tree.placer.trunk.DeadLogTrunkPlacer;
+import dev.arthomnix.spaghettitrees.tree.placer.trunk.UndergrowthBushTrunkPlacer;
 import dev.arthomnix.spaghettitrees.util.RegistryUtil;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;

@@ -1,4 +1,4 @@
-package dev.arthomnix.spaghettitrees.mixin;
+package dev.arthomnix.spaghettitrees.mixin.invoker;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.world.gen.trunk.TrunkPlacer;

@@ -1,5 +1,6 @@
 package dev.arthomnix.spaghettitrees.mixin;
 
+import dev.arthomnix.spaghettitrees.mixin.invoker.SaplingBlockInvoker;
 import dev.arthomnix.spaghettitrees.sapling.BetterBirchSaplingGenerator;
 import dev.arthomnix.spaghettitrees.sapling.BetterOakSaplingGenerator;
 import net.minecraft.block.AbstractBlock;

@@ -1,4 +1,4 @@
-package dev.arthomnix.spaghettitrees.mixin;
+package dev.arthomnix.spaghettitrees.mixin.invoker;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.SaplingBlock;

@@ -1,6 +1,7 @@
-package dev.arthomnix.spaghettitrees.tree;
+package dev.arthomnix.spaghettitrees.tree.feature;
 
 import com.google.common.collect.ImmutableList;
+import dev.arthomnix.spaghettitrees.tree.feature.BetterTreesConfiguredFeatures;
 import dev.arthomnix.spaghettitrees.util.RegistryUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;

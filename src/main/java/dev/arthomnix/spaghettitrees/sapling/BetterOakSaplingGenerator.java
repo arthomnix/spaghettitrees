@@ -1,6 +1,6 @@
 package dev.arthomnix.spaghettitrees.sapling;
 
-import dev.arthomnix.spaghettitrees.tree.BetterTreesConfiguredFeatures;
+import dev.arthomnix.spaghettitrees.tree.feature.BetterTreesConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.math.random.Random;

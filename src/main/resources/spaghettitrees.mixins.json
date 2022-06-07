@@ -5,15 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BlocksMixin",
-    "BushFoliagePlacerMixin",
-    "DefaultBiomeCreatorMixin",
-    "DefaultBiomeFeaturesMixin",
-    "FoliagePlacerInvoker",
-    "LargeOakFoliagePlacerMixin",
-    "SaplingBlockInvoker",
-    "SimpleBlockStateProviderInvoker",
-    "TreeFeatureMixin",
-    "TrunkPlacerTypeInvoker"
+    "foliage.BushFoliagePlacerMixin",
+    "biome.DefaultBiomeCreatorMixin",
+    "biome.DefaultBiomeFeaturesMixin",
+    "invoker.FoliagePlacerInvoker",
+    "foliage.LargeOakFoliagePlacerMixin",
+    "invoker.SaplingBlockInvoker",
+    "invoker.SimpleBlockStateProviderInvoker",
+    "foliage.TreeFeatureMixin",
+    "invoker.TrunkPlacerTypeInvoker"
   ],
   "client": [
   ],
