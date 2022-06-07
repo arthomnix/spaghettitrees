@@ -116,7 +116,7 @@ public class BetterTreesConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_SWAMP_OAK = RegistryUtil.registerConfiguredFeature(
             new Identifier("spaghettitrees", "tree_better_swamp_oak"),
             Feature.TREE,
-            oakBuilder(false).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build()
+            oakBuilder(false).decorators(ImmutableList.of(new LeavesVineTreeDecorator(0.25f))).build()
     );
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> TREE_BETTER_OAK_RARE_BEES = RegistryUtil.registerConfiguredFeature(
