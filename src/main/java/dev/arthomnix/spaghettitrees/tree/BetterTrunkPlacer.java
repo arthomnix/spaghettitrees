@@ -19,14 +19,14 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class BetterTrunkPlacer extends TrunkPlacer {
-    private int branchLengthModifier; // gets subtracted from the length of each new Branch (parent branch level > 0)
-    private int initialBranchLengthModifier; // gets subtracted from the length of each new Branch generated off the trunk
-    private double branchProbabilityModifier;
-    private double subBranchProbabilityDivisor;
-    private double minLeftBias;
-    private double maxLeftBias;
-    private double minUpBias;
-    private double maxUpBias;
+    private final int branchLengthModifier; // gets subtracted from the length of each new Branch (parent branch level > 0)
+    private final int initialBranchLengthModifier; // gets subtracted from the length of each new Branch generated off the trunk
+    private final double branchProbabilityModifier;
+    private final double subBranchProbabilityDivisor;
+    private final double minLeftBias;
+    private final double maxLeftBias;
+    private final double minUpBias;
+    private final double maxUpBias;
 
     public static final Codec<BetterTrunkPlacer> CODEC = RecordCodecBuilder.create(instance ->
             fillTrunkPlacerFields(instance).apply(instance, BetterTrunkPlacer::new));
