@@ -3,6 +3,7 @@ package dev.arthomnix.spaghettitrees.tree;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.arthomnix.spaghettitrees.config.SpaghettiTreesConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -19,6 +20,10 @@ public class DeadLogTrunkPlacer extends BetterTrunkPlacer {
     public static final Codec<DeadLogTrunkPlacer> CODEC = RecordCodecBuilder.create(
             instance -> fillTrunkPlacerFields(instance).apply(instance, DeadLogTrunkPlacer::new)
     );
+
+    public DeadLogTrunkPlacer(SpaghettiTreesConfig.TrunkPlacerSettings settings) {
+        super(settings);
+    }
 
     public DeadLogTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
         super(baseHeight, firstRandomHeight, secondRandomHeight, 0.25D, 2D, 2, 6, 0D, 1D, 0D, 1D);
