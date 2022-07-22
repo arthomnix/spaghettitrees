@@ -1,7 +1,6 @@
 package dev.arthomnix.spaghettitrees.tree.feature;
 
 import com.google.common.collect.ImmutableList;
-import dev.arthomnix.spaghettitrees.tree.feature.BetterTreesConfiguredFeatures;
 import dev.arthomnix.spaghettitrees.util.RegistryUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
@@ -171,8 +170,9 @@ public class BetterTreesPlacedFeatures {
     )));
 
     public static final RegistryEntry<PlacedFeature> BETTER_WATER_BIOME_TREES = RegistryUtil.registerPlacedFeature(new Identifier("spaghettitrees", "placed_better_water_biome_trees"), new PlacedFeature(BetterTreesConfiguredFeatures.TREE_BETTER_OAK,
-            VegetationPlacedFeatures.modifiers(
-                    PlacedFeatures.createCountExtraModifier(0, 0.1f, 1)
+            VegetationPlacedFeatures.modifiersWithWouldSurvive(
+                    PlacedFeatures.createCountExtraModifier(0, 0.1f, 1),
+                    Blocks.OAK_SAPLING
             )
     ));
 
